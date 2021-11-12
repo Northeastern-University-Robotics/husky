@@ -1,10 +1,6 @@
 
-
-import tornado.httpserver
-import tornado.websocket
-import tornado.ioloop
-import tornado.web
 import socket
+from tornado import httpserver, websocket,ioloop,web,gen
 
 import tornado.web
 import tornado.ioloop
@@ -32,19 +28,28 @@ class staticRequestHandler(tornado.web.RequestHandler):
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
-    def open(self):
+    async def open(self):
         print( 'new connection')
       
-    def on_message(self, message):
+    async def on_message(self, message):
         print ('message received:  %s' % message)
         # Reverse Message and send it back
         print ('sending back message: %s' % message[::-1])
-        self.write_message(message[::-1])
+        i =0
+        while(True):
+            i=i+1
+            try:
+                await self.write_message(message[::-1]+ str(i))
+            except Exception as e:
+                print(e.with_traceback)       
+
+            await gen.sleep(1)
+
  
-    def on_close(self):
+    async def on_close(self):
         print ('connection closed')
  
-    def check_origin(self, origin):
+    async def check_origin(self, origin):
         return True
  
 

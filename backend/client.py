@@ -13,9 +13,10 @@ async def listen():
         await asyncio.sleep(1)
 
         # Stay alive forever, listening to incoming msgs
-        msg = await ws.recv()
-        print(msg)
+        while(True):
+            msg = await ws.recv()
+            print(msg)
+            
 
 # Start the connection
-while(True):
-    asyncio.get_event_loop().run_until_complete(listen())
+asyncio.get_event_loop().run_until_complete(listen())
