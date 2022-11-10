@@ -1,0 +1,2 @@
+moteus/src/motor_control
+-DCATKIN_DEVEL_PREFIX=/home/da/Robot-Dog/2021-2022/Northeastern-Robotics-main/Robot-Dog/moteus_ws/devel -DCMAKE_INSTALL_PREFIX=/home/da/Robot-Dog/2021-2022/Northeastern-Robotics-main/Robot-Dog/moteus_ws/install -G Unix Makefiles

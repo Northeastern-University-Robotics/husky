@@ -1,0 +1,8 @@
+prefix=/home/da/Robot-Dog/2021-2022/Northeastern-Robotics-main/Robot-Dog/moteus_ws/devel
+
+Name: moteus
+Description: Description of moteus
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
