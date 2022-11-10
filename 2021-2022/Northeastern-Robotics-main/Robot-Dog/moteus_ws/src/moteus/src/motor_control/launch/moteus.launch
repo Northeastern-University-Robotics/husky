@@ -1,0 +1,4 @@
+<launch>
+    <node name="moteus_control" pkg="motor_control" type="motor_controller.py" output="screen" args="$(arg canIDs)"></node>
+    <node name="moteus_states" pkg="motor_control" type="motor_publiser.py" output="screen" args="$(arg canIDs)"></node>
+</launch>
