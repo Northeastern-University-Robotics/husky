@@ -159,6 +159,33 @@ class Moteus:
             print(position)
             print("Position Reached")
             return True;
+
+
+    #takes in the name of a JSON file and parse the input to the set the attributes of the various motors
+    def parsingJson(self, fileName):
+        #while True:
+        f = open(fileName) #opening a file that is hopefully JSON
+        allData = json.load(f) #load json file data as a library
+        for i in allData: 
+            data = allData[i] #grabs first list that contains a library
+            #print(data)
+            motorId = data[0]['motor-id']
+            pos = data[0]['position']
+            vel = data[0]['velocity']
+            torque = data[0]['torque']
+            self.setAttributes(canId=motorId, pos=pos, velocity=vel, torque=torque)
+
+    #sends getParsedResults information to a JSON file
+    def returnToJson(self, fileName):
+        value = None
+        try:    
+            value = self.getParsedResults() 
+            #print(value)
+        except Exception as e:
+            print(e)
+            self.closeMoteus()
+        f= open(fileName)  # a JSON file
+        json.dump(value, f) #sends getParsedResults info into opened JSON file
     
 
     def __moteusMain(self):
@@ -615,16 +642,19 @@ if __name__ == '__main__':
 #to add:
 #flux braking- moteus defaults to discharging voltage when braking to DC power bus
     #servo.flux_brake_min_voltage and servo.flux_brake_resistance_ohm can change this
-    def parsingJson(self, fileName):
-        #while True:
-        f = open(fileName) #opening a file that is hopefully JSON
-        allData = json.load(f) #load json file data as a library
-        for i in allData: 
-            data = allData[i]
-            #print(data)
-            motorId = data[0]['motor-id']
-            #['motor-id']
-            pos = data[0]['position']
-            vel = data[0]['velocity']
-            torque = data[0]['torque']
-            self.setAttributes(canId=motorId, pos=pos, velocity=vel, torque=torque)
+
+
+
+
+        # {
+        #             "MODE" : result.values[0x0],
+        #             "POSITION" : result.values[0x1],
+        #             "VELOCITY" : result.values[0x2],
+        #             "TORQUE" : result.values[0x3],
+        #             "VOLTAGE": result.values[0x00d],
+        #             "TEMPERATURE" : result.values[0x00e],
+        #             "FAULT" : result.values[0x00f]
+        #         }
+
+
+        
