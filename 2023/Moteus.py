@@ -622,9 +622,9 @@ if __name__ == '__main__':
         for i in allData: 
             data = allData[i]
             #print(data)
-            motorId = data[0]['motor-id']
+            motorId = data[0]
             #['motor-id']
-            pos = data[0]['position']
-            vel = data[0]['velocity']
-            torque = data[0]['torque']
+            pos = data[1]
+            vel = data[2]
+            torque = data[3]
             self.setAttributes(canId=motorId, pos=pos, velocity=vel, torque=torque)
