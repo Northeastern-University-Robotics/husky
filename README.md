@@ -1,7 +1,7 @@
 <p align="center">
      <img src="https://avatars.githubusercontent.com/u/115505515?s=400&u=88634494b2fd8d86a015d1fa312a77a39ff46cd8&v=4" width="200" style="border-radius:50%"/>
 
-# NU-Dog 🐕
+# NU-Dog 🐕🐕🐕
 Offical Repository for the Northeastern University Robotics Club's Robot Dog.
 
 This repository consists of all the software (legacy + latest) development. You are welcome to contribute to this repository.
